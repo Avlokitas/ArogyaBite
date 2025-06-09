@@ -1,1 +1,1 @@
-# Arogya-Bite
+# ArogyaBite
