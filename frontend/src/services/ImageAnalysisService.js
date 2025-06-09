@@ -4,7 +4,7 @@ import OpenAI from 'openai';
 
 
 const openai = new OpenAI({
-  apiKey: process.env.REACT_APP_OPENAI_API_KEY, 
+  apiKey: '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', 
   
   dangerouslyAllowBrowser: true, 
 });
@@ -36,10 +36,8 @@ export const analyzeIngredients = async (ingredientText, userAllergies = []) => 
   try {
     
     
-    // Enhanced mock analysis with better allergy detection
     const mockAnalysis = enhancedAnalyzeIngredients(ingredientText, userAllergies);
     
-    // delay to simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     
     return mockAnalysis;
@@ -49,9 +47,8 @@ export const analyzeIngredients = async (ingredientText, userAllergies = []) => 
   }
 };
 
-// Enhanced mock function for more realistic analysis
 const enhancedAnalyzeIngredients = (ingredientText, userAllergies=[]) => {
-  // Extract product and brand name
+  
   let productName = 'food item';
   let brandName = '';
   const lowerText = ingredientText.toLowerCase();
@@ -70,7 +67,6 @@ const enhancedAnalyzeIngredients = (ingredientText, userAllergies=[]) => {
     }
   }
   
-  // Extract ingredients - improved approach
   const extractedIngredients = ingredientText
     .replace(/ingredients:?/i, '')
     .split(/[,.;]/)
@@ -141,7 +137,6 @@ const enhancedAnalyzeIngredients = (ingredientText, userAllergies=[]) => {
     }
   };
   
-  // Additives database - classified by health concerns
   const additivesDatabase = {
     high_concern: [
       'sodium nitrite', 'sodium nitrate', 'bha', 'bht', 'tbhq', 'potassium bromate', 'propyl gallate',
@@ -161,7 +156,6 @@ const enhancedAnalyzeIngredients = (ingredientText, userAllergies=[]) => {
     ]
   };
   
-  // Healthy ingredients database
   const healthyIngredientsDatabase = [
     'whole grain', 'organic', 'natural', 'vitamin', 'mineral', 'fiber', 'protein',
     'antioxidant', 'probiotic', 'prebiotic', 'omega-3', 'unsweetened', 'quinoa',
@@ -176,40 +170,10 @@ const enhancedAnalyzeIngredients = (ingredientText, userAllergies=[]) => {
   const flaggedAllergens = [];
   let allergensFound = false;
   
-  // if (userAllergies.length > 0) {
-  //   userAllergies.forEach(allergy => {
-  //     const allergyLower = allergy.toLowerCase();
-      
-  //     // Check if this allergy is in our database
-  //     Object.keys(allergenDatabase).forEach(allergenType => {
-  //       if (allergenType.includes(allergyLower) || allergyLower.includes(allergenType)) {
-  //         const allergenInfo = allergenDatabase[allergenType];
-          
-  //         // Check all terms for this allergen
-  //         allergenInfo.terms.forEach(term => {
-  //           // Look for the term in all ingredients and the raw text
-  //           if (lowerText.includes(term) || 
-  //               extractedIngredients.some(ing => ing.toLowerCase().includes(term))) {
-              
-  //             // Check if we already found this allergen
-  //             if (!flaggedAllergens.some(a => a.name.includes(term))) {
-  //               flaggedAllergens.push({
-  //                 name: term,
-  //                 associatedWith: allergenType,
-  //                 severity: allergenInfo.severity
-  //               });
-  //               allergensFound = true;
-  //             }
-  //           }
-  //         });
-  //       }
-  //     });
-  //   });
-  // }
   
   if (normalizedUserAllergies.length > 0) {
-    // First check if any user allergy matches a known allergen category
     normalizedUserAllergies.forEach(userAllergy => {
+      
       // Find matching allergen categories
       const matchingCategories = Object.keys(allergenDatabase).filter(
         allergenType => allergenType.toLowerCase().includes(userAllergy) || 
@@ -251,7 +215,6 @@ const enhancedAnalyzeIngredients = (ingredientText, userAllergies=[]) => {
   // Identify additives
   const foundAdditives = [];
   
-  // Check high concern additives
   additivesDatabase.high_concern.forEach(additive => {
     if (lowerText.includes(additive)) {
       foundAdditives.push({
@@ -284,7 +247,7 @@ const enhancedAnalyzeIngredients = (ingredientText, userAllergies=[]) => {
   }
   
   // Calculate health score (enhanced algorithm)
-  let healthScore = 50; // Start at neutral
+  let healthScore = 50; //initial
   
   // Check for healthy ingredients
   let healthyIngredientsCount = 0;
@@ -311,12 +274,12 @@ const enhancedAnalyzeIngredients = (ingredientText, userAllergies=[]) => {
     }
   });
   
-  // Adjust score based on length (more ingredients typically means more processed)
+  // Adjust score based on length 
   if (extractedIngredients.length > 7) {
     healthScore -= Math.min(20, (extractedIngredients.length - 7) * 1.5);
   }
   
-  // Bonus for short ingredient lists (less processed)
+  // Bonus for short ingredient lists 
   if (extractedIngredients.length <= 5) {
     healthScore += 10;
   }
@@ -334,13 +297,10 @@ const enhancedAnalyzeIngredients = (ingredientText, userAllergies=[]) => {
     healthScore += 3;
   }
   
-  // Allergen penalty
   if (flaggedAllergens.length > 0) {
-    // Severe penalty if user has allergies and they're found
     healthScore -= Math.min(20, flaggedAllergens.length * 7);
   }
   
-  // Major red flags that severely impact health score
   const redFlags = [
     'partially hydrogenated', 'hydrogenated', 'trans fat', 'high fructose',
     'artificial color', 'artificial flavour', 'artificial flavor'
@@ -434,7 +394,6 @@ console.log('isSafe:', flaggedAllergens.length === 0);
     concern: a.concern
   }));
   
-  // Prepare final response
   return {
     productName,
     brandName,

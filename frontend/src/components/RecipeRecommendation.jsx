@@ -58,13 +58,13 @@ const RecipeRecommendation = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white px-4 py-12">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-teal-400 text-transparent bg-clip-text">
-            <ChefHat className="h-10 w-10" />
-            <h1 className="text-4xl font-bold">Arogya Bite</h1>
+   <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white px-4 py-12 flex justify-center items-center">
+  <div className="max-w-4xl w-full text-center">
+    {/* Header */}
+    <div className="mb-12 flex flex-col items-center gap-3 pb-12">
+      <div className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-teal-400 text-transparent bg-clip-text">
+        <ChefHat className="h-10 w-10" />
+        <h1 className="text-4xl font-bold">Recipe Recommendation</h1>
           </div>
           <p className="mt-3 text-lg text-gray-400">
             Discover personalized recipe recommendations tailored to your dietary needs
@@ -159,12 +159,7 @@ const RecipeRecommendation = () => {
                     <h4 className="text-sm font-medium text-gray-300 mb-1">Ingredients:</h4>
                     <p className="text-gray-400">{rec.Ingredients_name}</p>
                   </div>
-                  {/* <button 
-                    onClick={() => handleViewRecipe(rec)}
-                    className="mt-4 text-sm font-medium text-green-400 hover:text-green-300 transition-colors cursor-pointer"
-                  >
-                    View full recipe →
-                  </button> */}
+  
                 </div>
               ))}
             </div>

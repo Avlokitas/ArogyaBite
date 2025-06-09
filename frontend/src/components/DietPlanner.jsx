@@ -105,14 +105,15 @@ const DietPlanner = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-200 pt-16 px-6 pb-6">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 flex items-center gap-3">
-          <HeartPulse className="text-green-400" size={28} />
-          <span className="bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">
-            Smart Diet Planner
-          </span>
-        </h1>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-200 px-6 pb-6 flex justify-center items-center">
+  <div className="max-w-6xl w-full text-center">
+    <h1 className="text-3xl font-bold mb-6 flex justify-center items-center gap-3">
+      <HeartPulse className="text-green-400" size={28} />
+      <span className="bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">
+        Smart Diet Planner
+      </span>
+    </h1>
+
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>

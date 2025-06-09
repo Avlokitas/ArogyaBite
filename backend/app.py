@@ -571,15 +571,14 @@ def diet_plan():
         return jsonify({'error': f"Failed to generate plan: {str(e)}"}), 500
 
 
+
 @app.route('/nutritional-recommendation', methods=['POST'])
 def nutrition_guide():
     data = request.json
-    email = data.get('email')  # Need to send email from frontend
+    email = data.get('email')  
     
-    # Fetch allergies from DB
     user = users_collection.find_one({'email': email})
     allergies = user.get('allergies', []) if user else []
-    # console.log(allergies);
     print(allergies)
     target_nutrients = {k: v for k, v in {
         'calories': data.get('calories'),

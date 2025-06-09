@@ -62,7 +62,7 @@ const NutritionGuide = () => {
         carbs: formData.carbs ? parseFloat(formData.carbs) : null,
         fat: formData.fat ? parseFloat(formData.fat) : null,
         fiber: formData.fiber ? parseFloat(formData.fiber) : null,
-        allergies: storedAllergies, // Using stored allergies only
+        allergies: storedAllergies, 
         preferences: preferencesArray,
       })
 
@@ -105,15 +105,15 @@ const NutritionGuide = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-200 pt-16 px-6 pb-6">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <HeartPulse className="h-10 w-10 text-green-400" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">
-              Arogya Bite
-            </h1>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-200 pt-24 px-6 pb-6">
+  <div className="max-w-5xl mx-auto text-center">
+    <div className="inline-flex items-center justify-center gap-3 mb-6">
+      <HeartPulse className="h-10 w-10 text-green-400" />
+      <h1 className="text-4xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">
+        Nutrition-Based Food Guide
+      </h1>
           </div>
-          <h2 className="text-2xl font-semibold text-white mb-2">Nutrition-Based Food Guide</h2>
+          <h2 className="text-2xl font-semibold text-white mb-2"></h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Get personalized food suggestions based on your dietary needs and preferences.
           </p>
@@ -347,9 +347,9 @@ const NutritionGuide = () => {
                           <div className="flex items-start justify-between">
                             <h3 className="text-xl font-semibold text-white">{food.name}</h3>
                             <div className="flex items-center gap-2">
-                              <span className="text-sm bg-green-900/50 text-green-300 px-3 py-1 rounded-full">
+                              {/* <span className="text-sm bg-green-900/50 text-green-300 px-3 py-1 rounded-full">
                                 {Math.round(food.nutrition_score * 100)}% match
-                              </span>
+                              </span> */}
                               <button className="text-gray-400 hover:text-white p-1">
                                 {expandedItem === index ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                               </button>

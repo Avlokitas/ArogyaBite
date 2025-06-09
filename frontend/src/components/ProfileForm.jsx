@@ -51,10 +51,10 @@ const ProfileForm = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <h2 className="mb-4 text-center">Complete Your Profile</h2>
+   <div className="bg-gradient-to-br from-gray-900 to-black text-gray-200 min-h-screen">
+     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-200 flex justify-center items-center px-6">
+  <div className="w-full max-w-md text-center">
+    <h2 className="text-3xl font-semibold mb-4 bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">Complete Your Profile</h2>
           <form onSubmit={handleSubmit}>
             {/* Age Field */}
             <div className="mb-3">
