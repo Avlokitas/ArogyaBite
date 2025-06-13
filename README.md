@@ -21,6 +21,20 @@ With food allergies, chronic conditions, and dietary restrictions on the rise, m
 
 ---
 
+## Sample Output
+
+![](screenshots/image7.png)
+![](screenshots/image4.png)
+![](screenshots/image1.png)
+![](screenshots/image3.png)
+![](screenshots/image6.png)
+![](screenshots/image5.png)
+![](screenshots/image9.png)
+![](screenshots/image12.png)
+![](screenshots/image11.png)
+
+---
+
 ## Tech Stack
 
 ### **Frontend**
